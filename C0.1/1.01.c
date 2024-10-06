@@ -15,7 +15,7 @@ typedef struct {
 	int id;
 	int jour;
 	char dj[MAX_CARACTERES_DMJ];
-	char etat[100];
+	char etat[500];
 } Absence;
 
 // Enregistrement des étudiants
@@ -65,7 +65,7 @@ void absence(int id, int jour, char dj[MAX_CARACTERES_DMJ])
 		printf("Identifiant incorrect\n");
 		return;
 	}
-	if (jour <= 0 || jour > 40)
+	if (jour <= 0 || jour > MAX_JOURS)
 	{
 		printf("Date incorrecte\n");
 		return;
@@ -90,8 +90,9 @@ void absence(int id, int jour, char dj[MAX_CARACTERES_DMJ])
 		absences[compteur_absences].id = id;
 		absences[compteur_absences].jour = jour;
 		strcpy(absences[compteur_absences].dj, dj);
-		printf("Absence enregistree (%d)\n", compteur_absences);
-		printf("%d %d %s \n", absences[compteur_absences].id, absences[compteur_absences].jour, absences[compteur_absences].dj);
+		strcpy(absences[compteur_absences].etat, "En attente de justification");
+		printf("Absence enregistree [%d]\n", compteur_absences);
+		/*printf("%d %d %s %s \n", absences[compteur_absences].id, absences[compteur_absences].jour, absences[compteur_absences].dj, absences[compteur_absences].etat);*/
 		compteur_absences++;
 	}
 	else {
@@ -123,13 +124,9 @@ int main() {
 			absence(id, jour, dj);
 		}
 
-		else
-		{
-			printf("Commande invalide...\n");
-		}
 	} while (strcmp(commande, "exit") != 0);
 
 	printf("\n");
-	printf("+---------- Arret du programme ----------+");
+	printf("=> Arret du programme...");
 	printf("\n");
 }
