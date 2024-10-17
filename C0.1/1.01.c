@@ -100,6 +100,8 @@ void absence(int id, int jour, char dj[MAX_CARACTERES_DMJ])
 	}
 }
 
+void etudiants(){}
+
 int main() {
 	char commande[INPUTMAX];
 	char nom[NOM_MAX];
@@ -122,6 +124,12 @@ int main() {
 		{
 			scanf("%d %d %s", &id, &jour, dj);
 			absence(id, jour, dj);
+		}
+
+		//Etudiants - C3
+		if (strcmp(commande, "eutidants") == 0) 
+		{
+			
 		}
 
 	} while (strcmp(commande, "exit") != 0);
